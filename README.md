@@ -2,7 +2,7 @@
 
 The repository is used to reproduce the evaluation from
 
-Formal Verification of Resource Synchronization Protocol Implementations: A Case Study in RTEMS
+_Formal Verification of Resource Synchronization Protocol Implementations: A Case Study in RTEMS
 
 for EMSOFT 2022. This document is explaining how to use the artifact to repeat the experiments presented in the paper, i.e., Section V and VI.
 
