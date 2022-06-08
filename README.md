@@ -1,5 +1,21 @@
-# Frama-C installation
+# Formal Verification of Resource Synchronization Protocol Implementations: A Case Study in RTEMS
 
+The repository is used to reproduce the evaluation from
+
+Formal Verification of Resource Synchronization Protocol Implementations: A Case Study in RTEMS
+
+for EMSOFT 2022. This document is explaining how to use the artifact to repeat the experiments presented in the paper, i.e., Section V and VI.
+
+The rest of the document is organized as follows:
+1. [Environment Setup](#environment-setup)
+2. [How to run the experiments](#how-to-run-the-experiments)
+3. [Overview of the corresponding functions](#overview-of-the-corresponding-functions)
+4. [Miscellaneous](#miscellaneous)
+
+## Environment Setup
+### Requirements
+
+1. Frama-C (vertion 22):
 - If Frama-C 22 is provided by your distribution, try that. For a more flexible way with the possibility for newes packages if required, use Opam as described below.
   - Frama-C > 22 has been witnessed not to work with the presented setup of contracts, source code and command-line options. Further adaptions may be required to profit from newer Frama-C-versions' features.
 - Install Opam, best with your distributions package manager
@@ -17,17 +33,9 @@
 - then run config detection again
 - for more info on frama-c with opam, see [Frama-C Opam Install](https://git.frama-c.com/pub/frama-c/blob/master/INSTALL.md)
 
-# Prerequisites
-
-- RTEMS:
-  - examples performed with [RTEMS 5.1](https://ftp.rtems.org/pub/rtems/releases/5/5.1/)
-  - provide a cross-compilation toolchain
-  - configure the source code
-- provide "stubs" to be included
-- provide annotated source code
-
-
-# Frama-C: Usage
+2. RTEMS (version 5.1):
+  - download [RTEMS 5.1](https://ftp.rtems.org/pub/rtems/releases/5/5.1/)
+  - download cross-compilation toolchain
 
 ## Folder structure
 
@@ -52,8 +60,8 @@ ${base}/
 |   |   └── (...)
 ```
 
-## Command
-
+## Setup
+- configure the source code by moving the provided "stubs" and annotated source code to the proper folders.
 - `${base}` is your starting point for your RTEMS sources and config directories. Please note that I didn't test the commands with this placeholder but used absolute paths instead.
 - the command is to be run from the cpukit directory (`${base}/rtems-ppc/src/rtems-5.1/cpukit`) for correct resolution of relative paths
 - Toolchain: `${base}/rtems-ppc/build/ppc5.1-tools`
@@ -61,6 +69,8 @@ ${base}/
 - config directory for multicore (`RTEMS_SMP` defined): `${base}/rtems-ppc/build/ppc5.1`
 - the stubs / function contracts are passed via the `-include fc_xyz_stubs.h` option within the cpp command
 - the last argument is the target source file which contains the (annotated) functions to be analyzed
+- 
+## Instructions
 
 - Example Frama-C invocation with gui, using `fc_icpp_stubs.h` and targeting `coremuteximpl.h`
 - for MrsP, exchange stub and implementation header and config directory
@@ -88,9 +98,7 @@ ${base}/
 - use `frama-c` instead of `frama-c-gui`
 - set verification targets with -wp-fct, e.g. `-wp-fct _CORE_ceiling_mutex_Set_owner,_CORE_ceiling_mutex_Seize,_CORE_ceiling_mutex_Surrender` for ICPP
 
-
-
-# Appendix
+## Notes
 
 - fc_common_stubs.h, fc_icpp_stubs.h, fc_mrsp_stubs.h: headers with annotated system functions
 - coremuteximpl-stripped.h, mrspimpl-stripped.h: function contracts for ICPP and MrsP, extracted from implementation headers
