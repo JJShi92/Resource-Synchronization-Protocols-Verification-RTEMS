@@ -9,7 +9,6 @@ for EMSOFT 2022. This document is explaining how to use the artifact to repeat t
 The rest of the document is organized as follows:
 1. [Environment Setup](#environment-setup)
 2. [How to run the experiments](#how-to-run-the-experiments)
-3. [Overview of the corresponding functions](#overview-of-the-corresponding-functions)
 4. [Miscellaneous](#miscellaneous)
 
 ## Environment Setup
@@ -37,7 +36,7 @@ The rest of the document is organized as follows:
   - download [RTEMS 5.1](https://ftp.rtems.org/pub/rtems/releases/5/5.1/)
   - download cross-compilation toolchain
 
-## Folder structure
+### Folder structure
 
 ```
 ${base}/
@@ -59,8 +58,9 @@ ${base}/
 |   |   |               └── mrspimpl.h
 |   |   └── (...)
 ```
+## How-to-run-the-experiments
 
-## Setup
+### Setup
 - configure the source code by moving the provided "stubs" and annotated source code to the proper folders.
 - `${base}` is your starting point for your RTEMS sources and config directories. Please note that I didn't test the commands with this placeholder but used absolute paths instead.
 - the command is to be run from the cpukit directory (`${base}/rtems-ppc/src/rtems-5.1/cpukit`) for correct resolution of relative paths
@@ -70,7 +70,7 @@ ${base}/
 - the stubs / function contracts are passed via the `-include fc_xyz_stubs.h` option within the cpp command
 - the last argument is the target source file which contains the (annotated) functions to be analyzed
 - 
-## Instructions
+### Instructions
 
 - Example Frama-C invocation with gui, using `fc_icpp_stubs.h` and targeting `coremuteximpl.h`
 - for MrsP, exchange stub and implementation header and config directory
@@ -93,12 +93,12 @@ ${base}/
 - In the top toolbar you can reparse the loaded sources which is handy if you change annotations or stub headers. However, sometimes a reload fails for some reason and only closing / relaunching the application with the above command works
 - Please also refer to the very helpful [docs on Frama-C and WP](https://frama-c.com/fc-versions/titanium.html) and the [Tutorials](https://frama-c.com/html/tutorials.html)
 
-## Non-Interactive with CLI
+### Non-Interactive with CLI
 
 - use `frama-c` instead of `frama-c-gui`
 - set verification targets with -wp-fct, e.g. `-wp-fct _CORE_ceiling_mutex_Set_owner,_CORE_ceiling_mutex_Seize,_CORE_ceiling_mutex_Surrender` for ICPP
 
-## Notes
+## Miscellaneous
 
 - fc_common_stubs.h, fc_icpp_stubs.h, fc_mrsp_stubs.h: headers with annotated system functions
 - coremuteximpl-stripped.h, mrspimpl-stripped.h: function contracts for ICPP and MrsP, extracted from implementation headers
