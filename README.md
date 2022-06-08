@@ -69,7 +69,7 @@ ${base}/
 - config directory for multicore (`RTEMS_SMP` defined): `${base}/rtems-ppc/build/ppc5.1`
 - the stubs / function contracts are passed via the `-include fc_xyz_stubs.h` option within the cpp command
 - the last argument is the target source file which contains the (annotated) functions to be analyzed
-- 
+
 ### Instructions
 
 - Example Frama-C invocation with gui, using `fc_icpp_stubs.h` and targeting `coremuteximpl.h`
