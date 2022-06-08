@@ -95,5 +95,5 @@ ${base}/
 - fc_common_stubs.h, fc_icpp_stubs.h, fc_mrsp_stubs.h: headers with annotated system functions
 - coremuteximpl-stripped.h, mrspimpl-stripped.h: function contracts for ICPP and MrsP, extracted from implementation headers
 - coremuteximpl.h, mrspimpl.h: implementation headers containing ICPP/MrsP function contracts and the proposed ICPP fix (verification target)
-- init.c: RTEMS Test for ICPP's priority ceiling check (for an explanation see thesis/Listing B.0.1)
+- init.c: RTEMS Test for ICPP's priority ceiling check.
 
