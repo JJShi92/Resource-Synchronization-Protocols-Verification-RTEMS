@@ -4,7 +4,9 @@ This repository is used to reproduce:
 
 _Formal Verification of Resource Synchronization Protocol Implementations: A Case Study in RTEMS_
 
-for EMSOFT 2022 Submission. The pre-print version can be found in [here](https://daes.cs.tu-dortmund.de/storages/daes-cs/r/Bilder/Beschaeftigte/M.Sc._Junjie_Shi/2022_emsoft_junjie.pdf). This document is explaining how to use the artifact to repeat the presented concepts presented in the paper, i.e., Section V and VI.
+for EMSOFT 2022 Submission. The pre-print version can be found in [here](https://daes.cs.tu-dortmund.de/storages/daes-cs/r/Bilder/Beschaeftigte/M.Sc._Junjie_Shi/2022_emsoft_junjie.pdf). 
+
+This document is explaining how to use the artifact to repeat the presented concepts presented in the paper, i.e., Section V and VI.
 
 The rest of the document is organized as follows:
 1. [Environment Setup](#environment-setup)
